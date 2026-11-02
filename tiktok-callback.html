@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Connecting TikTok · Clever Finds</title>
+  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header><div class="wrap"><img src="logo.png" alt=""><a href="./">Clever Finds</a></div></header>
+  <main class="wrap">
+    <h1>Connecting TikTok…</h1>
+    <p id="status">Handing TikTok's answer to the Clever Finds publisher on this computer.</p>
+    <p>This page is only used by the Clever Finds publishing tool. It stores nothing and sends
+      nothing anywhere except to the tool running on your own computer.</p>
+  </main>
+  <script>
+    // TikTok's Login Kit for web apps needs an https redirect, but the publisher waits on this
+    // computer: pass the answer (code, state or error) on to it. Nothing leaves the browser.
+    (function () {
+      var query = window.location.search;
+      if (!query) {
+        document.getElementById("status").textContent = "Nothing to hand over: open this page from TikTok's login.";
+        return;
+      }
+      window.location.replace("http://127.0.0.1:8086/" + query);
+    })();
+  </script>
+  <footer><div class="wrap">
+    <a href="./">Home</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms</a>
+  </div></footer>
+</body>
+</html>
